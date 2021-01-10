@@ -5,15 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ShortUrlService } from './core';
+import { AuthService, ShortUrlService } from './core';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { ShortUrlComponent } from './modules/short-url/short-url.component';
+import { AdminComponent } from './modules/admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ShortUrlComponent
+    ShortUrlComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,7 @@ import { ShortUrlComponent } from './modules/short-url/short-url.component';
     HttpClientModule
   ],
   providers: [
+    AuthService,
     ShortUrlService
   ],
   bootstrap: [AppComponent]

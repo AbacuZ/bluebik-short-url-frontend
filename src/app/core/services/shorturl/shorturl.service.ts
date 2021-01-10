@@ -13,6 +13,10 @@ export class ShortUrlService {
 
     constructor(private http: HttpClient) { }
 
+    findAll(): Observable<any> {
+        return this.http.get(this.SHORT_URL_API);
+    }
+
     generateURL(): Observable<any> {
         return this.http.post(this.SHORT_URL_API, this.getShortUrl());
     }

@@ -1,0 +1,20 @@
+<div class="container">
+    <table class="table row-border hover table-bordered table-hover">
+        <thead>
+          <tr>
+            <th width="20%">id</th>
+            <th width="70%">Full URL</th>
+            <th class="text-center" width="10%">Count Click</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="rowDatas.length === 0">
+            <td colspan="3">No Data</td>
+        </tr>
+        <tr *ngFor="let row of rowDatas; let i = index">
+            <td width="20%">{{ row.id }}</td>
+            <td width="70%">{{ row.url }}</td>
+            <td width="10%" class="text-center">{{ row.staticClick }}</td>
+        </tr>
+    </table>
+</div>
