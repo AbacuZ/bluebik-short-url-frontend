@@ -1,0 +1,42 @@
+<div class="bg-dark">
+    <div class="container">
+        <form class="pt-4 pb-2" [formGroup]="shortUrlForm">
+            <fieldset>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input 
+                            type="text" 
+                            class="form-control form-control-lg" 
+                            formControlName="shortUrl"
+                            [ngClass]="{ 'is-invalid': isNextForm && f.shortUrl.errors }"
+                            placeholder="Shorten your link"
+                        >
+                        <div class="invalid-feedback" *ngIf="isNextForm && f.shortUrl.errors">
+                            <div *ngIf="f.shortUrl.errors.required">Please fill in required fields.</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="onClickShorten()">Shorten</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <div class="row" *ngIf="isWarning">
+            <div class="col-sm-12">
+                <div class="alert alert-danger text-center" role="alert">Invalid URL</div>
+            </div>
+        </div>
+        <div class="rounded bg-light" *ngIf="shortUrlData.length !== 0">
+            <div class="row p-3" *ngFor="let row of shortUrlData; let i = index">
+                <div class="col-sm-6 text-truncate">{{ row.fullUrl }}</div>
+                <div class="col-sm-4 text-right">
+                    <a href="{{row.shortUrl}}" target="_blank">{{ row.shortUrl }}</a>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="copyText(row.shortUrl)">Copy</button>
+                </div>
+            </div>
+        </div>
+        <div class="pb-4"></div>
+    </div>
+</div>
